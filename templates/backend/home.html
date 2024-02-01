@@ -1,0 +1,378 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Freelancer Portfolio Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <style>
+        /* Styles for the navbar */
+        .fixed-top-navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000; /* Ensures the navbar stays on top of other elements */
+            background-color: #333; /* Example background color */
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .2); /* Optional: adds a shadow for better visibility */
+        }
+
+        body {
+            padding-top: 60px; /* Add padding to the top of the body to prevent content from hiding behind the navbar */
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="51">
+
+<!-- Navbar Start -->
+<nav class="fixed-top-navbar">
+    <ul>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li>Welcome, {{ user.username }}!</li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li>Welcome, Guest!</li>
+        {% endif %}
+    </ul>
+</nav>
+<!-- Navbar End -->
+
+{% if messages %}
+    <div class="mt-4">
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- About Start -->
+<div class="container-fluid py-5" id="about">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
+            <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-5 pb-4 pb-lg-0">
+                <img class="img-fluid rounded w-100" src="{% static 'img/about.jpg' %}" alt="">
+            </div>
+            <div class="col-lg-7">
+                <h3 class="mb-4">UI/UX Designer & Web Developer</h3>
+                <p>Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est
+                    tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum. Amet dolor stet
+                    lorem diam dolor justo et dolor dolor dolor</p>
+                <div class="row mb-3">
+                    <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">Kate Winslet</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">1 April 1990</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">Master</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">10 Years</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">+012 345 6789</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">info@example.com</span></h6>
+                    </div>
+                    <div class="col-sm-6 py-2"><h6>Address: <span
+                            class="text-secondary">123 Street, New York, USA</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<!-- Services Start -->
+<div class="container-fluid pt-5" id="service">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Service</h1>
+            <h1 class="position-absolute text-uppercase text-primary">My Services</h1>
+        </div>
+        <div class="row pb-3">
+            <div class="col-lg-4 col-md-6 text-center mb-5">
+                <div class="d-flex align-items-center justify-content-center mb-4">
+                    <i class="fa fa-2x fa-laptop service-icon bg-primary text-white mr-3"></i>
+                    <h4 class="font-weight-bold m-0">Web Design</h4>
+                </div>
+                <p>Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
+                    labore eirmod erat clita</p>
+                <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center mb-5">
+                <div class="d-flex align-items-center justify-content-center mb-4">
+                    <i class="fa fa-2x fa-laptop-code service-icon bg-primary text-white mr-3"></i>
+                    <h4 class="font-weight-bold m-0">Web Development</h4>
+                </div>
+                <p>Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
+                    labore eirmod erat clita</p>
+                <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center mb-5">
+                <div class="d-flex align-items-center justify-content-center mb-4">
+                    <i class="fab fa-2x fa-android service-icon bg-primary text-white mr-3"></i>
+                    <h4 class="font-weight-bold m-0">Apps Design</h4>
+                </div>
+                <p>Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
+                    labore eirmod erat clita</p>
+                <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center mb-5">
+                <div class="d-flex align-items-center justify-content-center mb-4">
+                    <i class="fab fa-2x fa-apple service-icon bg-primary text-white mr-3"></i>
+                    <h4 class="font-weight-bold m-0">Apps Development</h4>
+                </div>
+                <p>Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
+                    labore eirmod erat clita</p>
+                <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center mb-5">
+                <div class="d-flex align-items-center justify-content-center mb-4">
+                    <i class="fa fa-2x fa-search service-icon bg-primary text-white mr-3"></i>
+                    <h4 class="font-weight-bold m-0">SEO</h4>
+                </div>
+                <p>Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
+                    labore eirmod erat clita</p>
+                <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center mb-5">
+                <div class="d-flex align-items-center justify-content-center mb-4">
+                    <i class="fa fa-2x fa-edit service-icon bg-primary text-white mr-3"></i>
+                    <h4 class="font-weight-bold m-0">Content Creating</h4>
+                </div>
+                <p>Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
+                    labore eirmod erat clita</p>
+                <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services End -->
+
+<!-- Portfolio Start -->
+<div class="container-fluid pt-5 pb-3" id="portfolio">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Gallery</h1>
+            <h1 class="position-absolute text-uppercase text-primary">My Portfolio</h1>
+        </div>
+        {% for project in projects %}
+            <div class="project">
+                <div class="col-lg-4 col-md-6 mb-4 first">
+                    <div class="position-relative overflow-hidden mb-2 d-flex align-items-center justify-content-center">
+                        <img class="img-fluid rounded w-100" src="{% static 'img/portfolio-1.jpg' %}" alt="">
+                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-primary" style="font-size: 25px;">{{ project.title }}</h3>
+                <i class="fa text-black" style="font-size: 20px;">{{ project.description }}</i>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+<!-- Portfolio End -->
+
+<!-- Testimonial Start -->
+<div class="container-fluid py-5" id="testimonial">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Review</h1>
+            <h1 class="position-absolute text-uppercase text-primary">Clients Say</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="owl-carousel testimonial-carousel">
+                    {% for fb in feedback %}
+                        <div class="text-center">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <h4 class="font-weight-light mb-4">{{ fb.comment }}</h4>
+                            <h5 class="font-weight-bold m-0">{{ fb.author }}</h5>
+                            <span>{{ fb.project }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+
+<!-- Feedback Start -->
+<div class="container-fluid py-5" id="contact">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Feedback</h1>
+            <h1 class="position-absolute text-uppercase text-primary">Leave your feedback</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form text-center">
+                    <div id="success"></div>
+                    <form method="post" action="" novalidate="novalidate">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="control-group col-sm-6">
+                                {{ feedback_form.author }}
+                                <p class="help-block text-danger">{{ feedback_form.author.errors }}</p>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                {{ feedback_form.project }}
+                                <p class="help-block text-danger">{{ feedback_form.project.errors }}</p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            {{ feedback_form.comment }}
+                            <p class="help-block text-danger">{{ feedback_form.comment.errors }}</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-primary" type="submit" name="submit_feedback_form">Send
+                                Feedback
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feedback End -->
+
+<!-- Blog Start -->
+<div class="container-fluid pt-5" id="blog">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Blog</h1>
+            <h1 class="position-absolute text-uppercase text-primary">Latest Blog</h1>
+        </div>
+        <div class="row">
+
+            {% for post in posts %}
+                <div class="col-lg-4 mb-5">
+                    <div class="position-relative mb-4">
+                        <img class="img-fluid rounded w-100" src="{% static 'img/blog-1.jpg' %}" alt="">
+                    </div>
+                    <h5 class="text-primary">{{ post.title }}</h5>
+                    <p class="fa text-black">{{ post.content }}</p>
+                    <small class="text-black text-uppercase">{{ post.date_created }}</small>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+
+
+<!-- Contact Start -->
+<div class="container-fluid py-5" id="contact">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contact</h1>
+            <h1 class="position-absolute text-uppercase text-primary">Contact Me</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form text-center">
+                    <div id="success"></div>
+                    <form method="post" action="" novalidate="novalidate">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="control-group col-sm-6">
+                                {{ contact_form.name }}
+                                <p class="help-block text-danger">{{ contact_form.name.errors }}</p>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                {{ contact_form.email }}
+                                <p class="help-block text-danger">{{ contact_form.email.errors }}</p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            {{ contact_form.message }}
+                            <p class="help-block text-danger">{{ contact_form.message.errors }}</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-primary" type="submit" name="submit_contact_form">Send
+                                Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
+    <div class="container text-center py-5">
+        <div class="d-flex justify-content-center mb-4">
+            <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a class="btn btn-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="d-flex justify-content-center mb-3">
+            <a class="text-white" href="#">Privacy</a>
+            <span class="px-3">|</span>
+            <a class="text-white" href="#">Terms</a>
+            <span class="px-3">|</span>
+            <a class="text-white" href="#">FAQs</a>
+            <span class="px-3">|</span>
+            <a class="text-white" href="#">Help</a>
+        </div>
+        <p class="m-0">&copy; <a class="text-white font-weight-bold" href="#">Domain Name</a>. All Rights Reserved.
+            Designed by <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+        </p>
+    </div>
+</div>
+<!-- Footer End -->
+
+<!-- Scroll to Bottom -->
+<i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'lib/typed/typed.min.js' %}"></script>
+<script src="{% static 'lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+
+<!-- Contact Javascript File -->
+<script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+<script src="{% static 'mail/contact.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
