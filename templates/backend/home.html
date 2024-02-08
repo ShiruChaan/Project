@@ -7,9 +7,6 @@
     <meta charset="utf-8">
     <title>Freelancer Portfolio Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
-
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -52,6 +49,7 @@
             <li>Welcome, {{ user.username }}!</li>
         {% else %}
             <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
             <li>Welcome, Guest!</li>
         {% endif %}
     </ul>
@@ -344,7 +342,7 @@
             <a class="text-white" href="#">Help</a>
         </div>
         <p class="m-0">&copy; <a class="text-white font-weight-bold" href="#">Domain Name</a>. All Rights Reserved.
-            Designed by <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+
         </p>
     </div>
 </div>

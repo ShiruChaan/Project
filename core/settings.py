@@ -60,21 +60,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME', 'yourdbname'),
-        'USER': os.environ.get('DB_USER', 'yourdbuser'),
-        'PASSWORD': os.environ.get('DB_PASS', 'yourdbpassword'),
-        'HOST': os.environ.get('DB_HOST', 'db'),
-        'PORT': '3306',
-    }
-}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'odp',
-        'USER': 'root',
-        'PASSWORD': 'ZA12092001za',
-        'HOST': 'localhost',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
+        'HOST': os.environ.get('DB_HOST'),
         'PORT': '3306',
     }
 }

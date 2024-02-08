@@ -10,8 +10,7 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView
-from django.views.generic.detail import DetailView
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import redirect
 
 
 class HomePageView(TemplateView):
